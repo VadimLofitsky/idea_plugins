@@ -1,0 +1,68 @@
+<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
+<idea-plugin>
+    <!-- Unique identifier of the plugin. It should be FQN. It cannot be changed between the plugin versions. -->
+    <id>lofitsky.idea_plugins.plugin.reveal_file_in_project_panel.MarkdownContext</id>
+
+    <!-- Public plugin name should be written in Title Case.
+         Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-name -->
+    <name>My Plugins Set</name>
+
+    <!-- Product and plugin compatibility requirements -->
+    <depends>com.intellij.modules.lang</depends>
+
+    <!-- Product and plugin compatibility requirements.
+         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
+    <depends>com.intellij.modules.platform</depends>
+
+    <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
+    <vendor email="vadik.ne@gmail.com" url="">Vadim Lofitsky</vendor>
+
+    <!-- Description of the plugin displayed on the Plugin Page and IDE Plugin Manager.
+         Simple HTML elements (text formatting, paragraphs, and lists) can be added inside of <![CDATA[ ]]> tag.
+         Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-description -->
+    <description>
+        <![CDATA[
+          Мой набор плагинов, live template'ов и функций для них<br/>
+          Adds the markdown context for live templates.<br/>
+          Adds dateTimeReversed() fun to be used in the live template variables.<br/>
+        ]]>
+    </description>
+
+    <actions>
+        <action id="RevealInProject.ProjectTW"
+                class="lofitsky.idea_plugins.plugin.reveal_file_in_project_panel.RevealInProjectTreeAction"
+                text="Reveal in Project"
+                description="Reveal file in Project Tool Window"
+                icon="AllIcons.ObjectBrowser.FlattenModules">
+            <add-to-group group-id="EditorPopupMenu" anchor="last"/>
+        </action>
+        <action id="RevealInProject.NavBar"
+                class="lofitsky.idea_plugins.plugin.reveal_file_in_project_panel.RevealInProjectTreeAction"
+                text="Reveal in Project"
+                description="Reveal file in Project Tool Window"
+                icon="AllIcons.ObjectBrowser.FlattenModules">
+            <add-to-group group-id="ProjectViewPopupMenuRunGroup" anchor="last"/>
+        </action>
+        <action id="OpenGnomeTerminal"
+                class="lofitsky.idea_plugins.plugin.open_gnome_terminal.OpenGnomeTerminalAction"
+                text="Gnome terminal here"
+                description="Open Gnome terminal here"
+                icon="/icons/gnomeTerminal.svg">
+            <add-to-group group-id="ProjectViewPopupMenuRunGroup" anchor="last"/>
+        </action>
+    </actions>
+
+    <!-- Extension points defined by the plugin.
+         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
+    <extensions defaultExtensionNs="com.intellij">
+        <liveTemplateContext contextId="Markdown" implementation="lofitsky.idea_plugins.live_template.context.MarkdownContext"/>
+
+        <defaultLiveTemplates file="/liveTemplates/Other.xml"/>
+        <defaultLiveTemplates file="/liveTemplates/Markdown.xml"/>
+        <liveTemplateContext contextId="EVERYWHEREE" implementation="lofitsky.idea_plugins.live_template.context.EverywhereeContext"/>
+        <liveTemplateMacro implementation="lofitsky.idea_plugins.live_template.func.curr_date_time_reversed.CurrDatetimeReversed" />
+
+        <toolWindow id="Translator" secondary="true" icon="AllIcons.Toolwindows.WebToolWindow" anchor="right"
+                    factoryClass="lofitsky.idea_plugins.plugin.translator.TranslatorToolWindowFactory"/>
+    </extensions>
+</idea-plugin>

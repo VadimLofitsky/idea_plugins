@@ -1,0 +1,20 @@
+<templateSet group="Markdown">
+    <template name="table"
+              value="&lt;table&gt;&#10;&#09;&lt;tr&gt;&#10;&#09;&#09;&lt;td&gt;$END$&lt;/td&gt;&#10;&#09;&lt;/tr&gt;&#10;&lt;/table&gt;"
+              description="insert HTML table"
+              toReformat="false"
+              toShortenFQNames="false">
+        <context>
+            <option name="Markdown" value="true" />
+        </context>
+    </template>
+    <template name="tablep"
+              value="&lt;table&gt;&#10;&#09;&lt;tr&gt;&lt;td&gt;$END$&lt;/td&gt;&lt;/tr&gt;&#10;&lt;/table&gt;"
+              description="insert HTML table (plain tr-s)"
+              toReformat="false"
+              toShortenFQNames="false">
+        <context>
+            <option name="Markdown" value="true" />
+        </context>
+    </template>
+</templateSet>

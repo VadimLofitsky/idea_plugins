@@ -1,0 +1,12 @@
+<templateSet group="Other">
+  <template name="now"
+            value="$TEXT$"
+            description="Current date and time reversed"
+            toReformat="false"
+            toShortenFQNames="false">
+    <variable name="TEXT" expression="dateTimeReversed()" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="EVERYWHEREE" value="true" />
+    </context>
+  </template>
+</templateSet>
